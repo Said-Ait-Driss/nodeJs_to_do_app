@@ -19,6 +19,26 @@ var data= [
 var bodyParser = require("body-parser");
 
 var parser= bodyParser.urlencoded({ extended:false });
+const mongoose = require('mongoose');
+
+// ? connect to mangodb 
+mongoose.connect("mongodb+srv://saidaitdriss:saidaitdriss1999@todos.wvzic.mongodb.net/todos?retryWrites=true&w=majority");
+
+// create shema // like blueprint
+var todoSchema = new mongoose.Schema({
+    title : String,
+    todo:String
+});
+// create model 
+var Todo = mongoose.model("Todo",todoSchema); // like whene making object from class
+
+// save new todo
+var item = Todo({ title:"tirst todo",todo:"buy cat hh" }).save(function(err){
+
+    if(err) throw err;
+
+    console.log("item saved");
+});
 
 module.exports = function (app){
 
