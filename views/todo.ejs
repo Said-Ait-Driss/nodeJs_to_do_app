@@ -11,17 +11,34 @@
 <body>
     <h1>My Todos</h1>
     <section id="todo-table">
-        <form>
-            <input type="text" placeholder="title" required />
-            <input type="text" placeholder="enter todo here ...." required />
+        <form action="/todo" method="post" id="form">
+            <input type="text" placeholder="title" name="title" id="title" required />
+            <input type="text" placeholder="enter todo here ...." name="todo" id="todo" required />
+            <input type="hidden" name="id" id="id" required value=<%= lastId %> />
             <button type="submit">Add todo</button>
         </form>
         <br/>
-        <ul>
-            <li>Item 1 </li>
-            <li>Item 2 </li>
-            <li>Item 3 </li>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>title</th>
+                    <th>todo</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% todos.forEach(item =>{ %>
+                    <tr>
+                        <td><%= item.title %></td>
+                        <td><%= item.todo %></td>
+                        <td>
+                            <button class="delete-btn" data-id=<%= item.id %>>delete</button>
+                        </td>
+                    </tr>
+                <% })  %>
+            </tbody>
+        </table>
     </section>
+    <script src="/assests/jquery-ajax.js"></script>
 </body>
 </html>
