@@ -3,7 +3,7 @@ var todoController = require("./controllers/todoController");
 var app = express();
 
 // set up the template engine
-app.use("view engine","ejs");
+app.set("view engine","ejs");
 
 // mapping the static files // ? middlware
 app.use("/assests",express.static("./public")); // ? whenver we visit the assets link then you should look at public folder

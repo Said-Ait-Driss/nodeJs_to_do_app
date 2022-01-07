@@ -1,0 +1,55 @@
+body {
+  background-color: rgba(0, 0, 0, 0.753);
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: chartreuse;
+}
+
+input {
+  padding: 16px 5px;
+  display: block;
+  margin: 5px auto;
+  border-radius: 7px;
+  border: 1px solid chartreuse;
+  background-color: transparent;
+  width: 60%;
+  color: chartreuse;
+  font-weight: bold;
+}
+
+input:focus {
+  outline: chartreuse;
+}
+
+button {
+  border-radius: 7px;
+  border: 1px solid chartreuse;
+  background-color: transparent;
+  width: 60%;
+  padding: 16px 5px;
+  color: chartreuse;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: chartreuse;
+  color: white;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  width: 90%;
+}
+
+ul li {
+  padding: 12px 5%;
+  border-bottom: 1px solid chartreuse;
+}
+ul li:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}

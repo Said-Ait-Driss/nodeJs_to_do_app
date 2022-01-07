@@ -3,6 +3,8 @@ module.exports = function (app){
     // for get todo
     app.get("/todo",function(req,res){
 
+        res.render("todo");
+
     });
 
     // for add todo
