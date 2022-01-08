@@ -32,32 +32,41 @@ var todoSchema = new mongoose.Schema({
 // create model 
 var Todo = mongoose.model("Todo",todoSchema); // like whene making object from class
 
-// save new todo
-var item = Todo({ title:"tirst todo",todo:"buy cat hh" }).save(function(err){
-
-    if(err) throw err;
-
-    console.log("item saved");
-});
-
 module.exports = function (app){
 
     // for get todo
     app.get("/todo",function(req,res){
-        const id = data.length > 0 ? data[data.length-1].id+1 : 0;
-        res.render("todo",{ todos:data ,lastId: id });
+        
+        // get data from mongodb and pass it to todo.ejs view by using Todo Model
 
+        Todo.find({}, function (err, docs) {
+            if(err) throw err;
+            res.render("todo",{ todos:docs});
+
+        });
     });
 
     // for add todo
     app.post("/todo",parser,function(req,res){
-        data.push(req.body);
-        const id = data.length > 0 ? data[data.length-1].id+1 : 0;
-        res.render("todo",{todos:data,lastId:id });
+        var newTodo = Todo(req.body).save(function(err,data){
+            if(err) throw err;
+            Todo.find({},function(err,data){
+                if(err) throw err;
+                res.render("todo",{todos:data});
+            })
+        });
     });
 
     // for delete todo
     app.delete("/todo/:id",function(req,res){
+
+        Todo.find({ _id: req.params.id}).remove(function(err,data){
+            if(err) throw err;
+            Todo.find({},function(err,data){
+                if(err) throw err;
+                res.render("todo",{todos:data});
+            })
+        });
 
         data = data.filter(el => el.id != req.params.id );
         res.json(data);

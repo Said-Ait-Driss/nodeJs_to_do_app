@@ -2,14 +2,12 @@ $(document).ready(function(){
 
         $("#form").submit(function(e){
             e.preventDefault();
-            const id = $("#id").val();
             const title = $("#title").val();
             const todo = $("#todo").val();
             $.ajax({
                 url: "/todo/",
                 type:"post",
                 data:{
-                    id : id,
                     title : title,
                     todo : todo
                 },
