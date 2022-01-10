@@ -23,6 +23,15 @@ input {
 input:focus {
   outline: chartreuse;
 }
+a {
+  padding: 10px;
+  color: white;
+  margin: 10px;
+  border-radius: 7px;
+}
+a:hover {
+  color: blue;
+}
 
 button {
   border-radius: 7px;
